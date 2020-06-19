@@ -4,6 +4,8 @@ import random
 import euclid 
 import sam2 
 import miller_rabin
+import sys
+sys.stdout=open("/home/app/results/results.log","w")
 
 
 
@@ -30,10 +32,10 @@ def factorize(n,e,d):
 		print("gcd(a,n)={}".format(ggT))
 		if ggT != 1:
 			return [a, n/a ]
-		au=sam2.multiply(a,u)
+		au=sam2.multiply(a,u,n)
 		print("a^u is : {}".format(au))
 		for j in range(0,s):
-			g=euclid.gcd(sam2.multiply(au,pow(2,j))-1,n) 
+			g=euclid.gcd(sam2.multiply(au,pow(2,j),n)-1,n) 
 			print("Iteration {}: {}".format(j,g))
 			if g != 1 and g != n:
 				return [g, n/g]
@@ -47,8 +49,6 @@ def simpledivision(n):
 
 
 # Uses the p-1 Method by J.M. Pollard
-def pollard(n):
-	B=2
 
 
 
@@ -68,16 +68,13 @@ e=17
 
 d=1927792861073
 
-#values=factorize(n,e,d)
-#ans="Computed factors are {} and {}".format(values[0],values[2])
-#if values[0]*values[1] == n :
-#	print("Test OK")
-#else:
-#	print("Test NOK")
+values=factorize(n,e,d)
+print("Computed factors are {} and {}".format(values[0],values[1]))
+if values[0]*values[1] == n :
+	print("Test OK")
+else:
+	print("Test NOK")
 
-[p,q ] = simpledivision(n)
-if p*q == n :
-	print("p={} and q={}. Test OK!".format(p,q)) 
 
 
 
