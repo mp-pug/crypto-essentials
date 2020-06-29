@@ -1,0 +1,11 @@
+Wozu steht folgendes in der ersten Zeile?
+
+#!/usr/bin/python3
+
+Antwort: das ist die sogenannte Shebang Zeile. Wenn man das in einem Python Skript einträgt, kann man unter bash das Skript mit ./skript.py aufrufen.
+(Vorrausgesetzt, der User hat die Berechtigung zum Ausführen. Sonst erst chmod 755 skript.py ausführen)
+
+
+Die Shebang Zeile verrät also, welcher Interpreter verwendet wird.
+
+
